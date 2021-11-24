@@ -54,7 +54,7 @@ module "wp-db" {
   project                   = var.project
 }
 
-# EC2-Host with running WP & DB and EIP associated
+# EC2-Host with running WP and associated EIP
 module "wp-host" {
   source         = "./modules/wp-host"
   vpc_id         = module.vpc.vpc_id

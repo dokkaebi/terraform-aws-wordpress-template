@@ -44,7 +44,7 @@ module "ec2_instance" {
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
 
-  user_data = templatefile("${path.module}/userdata/userdata.playground.sh", {
+  user_data = templatefile("${path.module}/userdata/userdata.wp.sh", {
     ZONE_NAME      = var.zone_name
     SUBDOMAIN      = var.subdomain
     TRAEFIK_CONFIG = file("${path.module}/config/traefik.yaml")
