@@ -1,0 +1,1 @@
+place `server.crt` and `server.key` in this directory
