@@ -69,6 +69,6 @@ module "wp-host" {
   db_name        = var.rds_database_name
   db_user_name   = var.rds_user_name
   db_password    = module.wp-db.db_password
-  tls_server_crt = file("${path.module}/certs/server.crt")
-  tls_server_key = file("${path.module}/certs/server.key")
+  tls_server_crt = "xxx"
+  tls_server_key = "xxx"
 }
