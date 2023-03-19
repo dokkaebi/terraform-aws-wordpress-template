@@ -14,7 +14,7 @@ module "security_group_db" {
 
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "3.4.1"
+  version = "5.6.0"
 
   identifier = "${var.project}-${terraform.workspace}-db"
 
@@ -31,8 +31,9 @@ module "db" {
   # DB option group
   major_engine_version = var.rds_major_engine_version
 
-  name     = var.rds_database_name
+  db_name  = var.rds_database_name
   username = var.rds_user_name
+  create_random_password = false
   password = data.aws_ssm_parameter.rds_password.value
   port     = "3306"
 
@@ -49,6 +50,7 @@ module "db" {
   backup_retention_period = var.rds_backup_retention_period
 
   # DB subnet group
+  create_db_subnet_group = true
   subnet_ids = var.rds_database_subnet_ids
 
   # Database Deletion Protection
