@@ -68,26 +68,6 @@ EOF
 cat > docker-compose.yml << EOF
 version: '3.7'
 services:
-  traefik:
-    image: traefik:v2.4
-    ports:
-      - "80:80"
-      - "443:443"
-    deploy:
-      resources:
-        limits:
-          cpus: 0.3
-          memory: 128M
-        reservations:
-          cpus: 0.1
-          memory: 64M
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.yaml:/etc/traefik/traefik.yaml
-      - ./certs/:/certs/
-    networks:
-      - proxy
-
   wordpress:
     image: wordpress:latest
     deploy:
@@ -101,6 +81,9 @@ services:
     restart: always
     networks:
       - proxy
+    ports:
+      - "80:80"
+      - "443:443"
     labels:
       - traefik.enable=true
       - traefik.http.routers.playground.rule=Host(\`${SUBDOMAIN}.${ZONE_NAME}\`,\`${ZONE_NAME}\`)
@@ -112,10 +95,11 @@ services:
       WORDPRESS_DB_PASSWORD: ${DB_PWD}
       WORDPRESS_DB_NAME: ${DB_NAME}
     volumes:
-       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-       - ./plugins:/var/www/html/wp-content/plugins
-       - ./themes:/var/www/html/wp-content/themes
-       - ./uploads:/var/www/html/wp-content/uploads
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./themes:/var/www/html/wp-content/themes
+      - ./uploads:/var/www/html/wp-content/uploads
 
 networks:
   proxy:
