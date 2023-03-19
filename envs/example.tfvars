@@ -24,7 +24,7 @@ instance_type = "t3.micro"
 
 ### RDS
 rds_multiaz                 = false
-rds_instance_class          = "db.t4g.micro"
+rds_instance_class          = "db.t2.micro"
 rds_engine                  = "mysql"
 rds_engine_version          = "5.7"
 rds_allocated_storage       = 5
