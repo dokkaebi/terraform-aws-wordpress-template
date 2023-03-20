@@ -5,5 +5,5 @@ output "db_host" {
 
 output "db_password" {
   description = "db password"
-  value       = data.aws_ssm_parameter.rds_password.value
+  value       = module.db.db_instance_password
 }

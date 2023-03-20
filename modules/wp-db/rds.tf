@@ -33,8 +33,6 @@ module "db" {
 
   db_name  = var.rds_database_name
   username = var.rds_user_name
-  create_random_password = false
-  password = data.aws_ssm_parameter.rds_password.value
   port     = "3306"
 
   # use security group created above
