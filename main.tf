@@ -72,3 +72,17 @@ module "wp-host" {
   tls_server_crt = "xxx"
   tls_server_key = "xxx"
 }
+
+module "wp-media" {
+  source         = "./modules/wp-media"
+  iam_role_id    = module.wp-host.iam_role_id
+  environment    = var.environment
+  project        = var.project
+}
+
+module "wp-cloudfront" {
+  source = "./modules/wp-cloudfront"
+  bucket = module.wp-media.s3_bucket
+  environment    = var.environment
+  project        = var.project
+}

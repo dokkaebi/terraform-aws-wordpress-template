@@ -97,9 +97,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-      - ./plugins:/var/www/html/wp-content/plugins
-      - ./themes:/var/www/html/wp-content/themes
-      - ./uploads:/var/www/html/wp-content/uploads
+      - ./wp-content:/var/www/html/wp-content
 
 networks:
   proxy:
@@ -107,9 +105,6 @@ networks:
       name: proxy
 EOF
 
-cd ..
-chown -R ubuntu:ubuntu wp
-chmod -R 755 wp
-cd wp
+mkdir wp-content
 
 docker-compose up -d
