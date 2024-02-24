@@ -30,7 +30,7 @@ module "vpc" {
 #  source     = "./modules/dns-a-record"
 #  dns_zone   = var.dns_zone
 #  subdomain  = var.subdomain
-#  ip-address = module.wp-host.elastic_ip
+#  ip-address = module.wp-host.elastic_ip.public_ip
 #  ttl        = "60"
 #}
 
