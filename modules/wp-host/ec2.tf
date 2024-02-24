@@ -13,6 +13,12 @@ module "security_group" {
   #tags = local.tags
 }
 
+module "cloudflare_ips" {
+  source = "github.com/orzarchi/terraform-aws-cloudflare-security-group"
+
+  security_group_id = "${module.security_group.security_group_id}"
+}
+
 resource "aws_eip" "wp-eip" {
   tags = {
     Name = "${var.project}-${var.environment}-wp-host-eip"
