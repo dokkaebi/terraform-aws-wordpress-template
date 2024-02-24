@@ -16,6 +16,6 @@ module "key_pair" {
 
 resource "local_file" "ssh_key" {
   content         = tls_private_key.this.private_key_pem
-  filename        = ".tmp/id_rsa"
+  filename        = ".tmp/${terraform.workspace}/id_rsa"
   file_permission = "0400"
 }
