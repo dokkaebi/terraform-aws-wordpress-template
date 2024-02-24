@@ -73,7 +73,7 @@ module "ec2_instance" {
 
   tags = {
     Terraform   = "true"
-    Environment = "dev"
+    Environment = "${var.environment}"
     Name        = "${var.project}-${var.environment}-wp"
   }
 }
