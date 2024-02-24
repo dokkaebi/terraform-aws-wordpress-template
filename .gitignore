@@ -3,3 +3,8 @@ certs/server.key
 .terraform
 .idea
 modules/wp-host/.tmp
+
+# vars and state
+terraform.*
+
+.tmp
