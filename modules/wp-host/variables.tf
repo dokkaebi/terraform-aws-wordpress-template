@@ -58,6 +58,11 @@ variable "db_password" {
   description = "db-password WP should use"
 }
 
+variable "mailersend_smtp_password" {
+  type        = string
+  description = "password for MailerSend SMTP relay, passed to WP plugin"
+}
+
 variable "tls_server_crt" {
   type        = string
   description = "TLS server certificate"

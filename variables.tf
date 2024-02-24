@@ -58,6 +58,13 @@ variable "instance_type" {
   description = "instance-type of EC2-instance"
 }
 
+# Wordpress Config
+variable "mailersend_smtp_password" {
+  type        = string
+  description = "password for MailerSend SMTP relay, passed to WP plugin"
+}
+
+
 # DNS
 
 variable "dns_zone" {

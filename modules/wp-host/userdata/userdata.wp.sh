@@ -94,6 +94,8 @@ services:
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PWD}
       WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_CONFIG_EXTRA: >
+        define( 'MAILERSEND_SMTP_PASSWORD', '${MAILERSEND_SMTP_PASSWORD}' );
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini

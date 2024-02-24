@@ -55,6 +55,7 @@ module "ec2_instance" {
     DB_PWD         = var.db_password
     DB_USER        = var.db_user_name
     DB_NAME        = var.db_name
+    MAILERSEND_SMTP_PASSWORD = var.mailersend_smtp_password
   })
 
   root_block_device = [

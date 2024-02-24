@@ -69,6 +69,7 @@ module "wp-host" {
   db_name        = var.rds_database_name
   db_user_name   = var.rds_user_name
   db_password    = module.wp-db.db_password
+  mailersend_smtp_password = var.mailersend_smtp_password
   tls_server_crt = "xxx"
   tls_server_key = "xxx"
 }
