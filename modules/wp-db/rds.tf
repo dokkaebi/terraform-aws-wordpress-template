@@ -1,6 +1,6 @@
 module "security_group_db" {
   source              = "terraform-aws-modules/security-group/aws//modules/mysql"
-  version             = "~> 4.0"
+  version             = "~> 5.0"
   name                = "${var.project}-${terraform.workspace}-rds-sg"
   description         = "Security group for rds instance"
   vpc_id              = var.vpc_id
@@ -14,7 +14,7 @@ module "security_group_db" {
 
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "5.6.0"
+  version = "~> 6.4"
 
   identifier = "${var.project}-${terraform.workspace}-db"
 

@@ -8,7 +8,7 @@
 # Networking
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "2.78.0"
+  version = "~> 5.5"
   name    = "${var.project}-${terraform.workspace}-vpc"
   cidr    = var.vpc_cidr
 

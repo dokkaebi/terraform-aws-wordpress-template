@@ -1,6 +1,6 @@
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 4.0"
+  version = "~> 5.0"
 
   name        = "${var.project}-${var.environment}-wp-host"
   description = "Security group for example usage with EC2 instance"
@@ -23,7 +23,7 @@ resource "aws_eip" "wp-eip" {
   tags = {
     Name = "${var.project}-${var.environment}-wp-host-eip"
   }
-  vpc = true
+  domain = "vpc"
 }
 
 resource "aws_eip_association" "wp-eip-association" {
@@ -34,7 +34,7 @@ resource "aws_eip_association" "wp-eip-association" {
 # Want to avoid ami updates forcing replacement, but can't use `lifecycle` with community module
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name = "${var.project}-${var.environment}-spot-instance"
 
