@@ -81,3 +81,8 @@ variable "rds_user_name" {
   type        = string
   description = "RDS user name"
 }
+
+variable "rds_password" {
+  type        = string
+  description = "RDS master password"
+}

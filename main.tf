@@ -34,6 +34,11 @@ module "vpc" {
 #  ttl        = "60"
 #}
 
+resource "random_password" "db_password" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
+}
 
 # RDS for WP
 module "wp-db" {
@@ -50,6 +55,7 @@ module "wp-db" {
   rds_major_engine_version  = var.rds_major_engine_version
   rds_max_allocated_storage = var.rds_max_allocated_storage
   rds_user_name             = var.rds_user_name
+  rds_password              = random_password.db_password.result
   environment               = var.environment
   project                   = var.project
 }
@@ -68,7 +74,7 @@ module "wp-host" {
   db_host        = module.wp-db.db_host
   db_name        = var.rds_database_name
   db_user_name   = var.rds_user_name
-  db_password    = module.wp-db.db_password
+  db_password    = random_password.db_password.result
   mailersend_smtp_password = var.mailersend_smtp_password
   tls_server_crt = "xxx"
   tls_server_key = "xxx"

@@ -33,7 +33,8 @@ module "db" {
 
   db_name  = var.rds_database_name
   username = var.rds_user_name
-  # note: since we don't provide a password, a random one is generated (and exposed as an output)
+  password = var.rds_password
+  manage_master_user_password = false
   port     = "3306"
 
   # use security group created above
