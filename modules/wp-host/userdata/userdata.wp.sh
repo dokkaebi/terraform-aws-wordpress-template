@@ -77,7 +77,6 @@ services:
           cpus: 1.00
           memory: 768M
         reservations:
-          cpus: 0.5
           memory: 512M
     restart: always
     networks:
