@@ -72,3 +72,8 @@ variable "tls_server_key" {
   type        = string
   description = "TLS cert key"
 }
+
+variable "initial_cidr_blocks" {
+  type        = list
+  description = "Passed to security group as `ingress_cidr_blocks`. Allows SSH, HTTP(S), and ICMP traffic. HTTP(S) rules will be overwritten when daily cloudflare task runs."
+}

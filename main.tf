@@ -78,4 +78,5 @@ module "wp-host" {
   mailersend_smtp_password = var.mailersend_smtp_password
   tls_server_crt = "xxx"
   tls_server_key = "xxx"
+  initial_cidr_blocks = ["${chomp(data.http.myip.response_body)}/32"]
 }

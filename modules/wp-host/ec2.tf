@@ -6,16 +6,16 @@ module "security_group" {
   description = "Security group for example usage with EC2 instance"
   vpc_id      = var.vpc_id
 
-  ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_cidr_blocks = var.initial_cidr_blocks
   ingress_rules       = ["http-80-tcp", "https-443-tcp", "all-icmp", "ssh-tcp"]
   egress_rules        = ["all-all"]
 
   #tags = local.tags
 }
 
+# Runs a daily Lambda to add cloudflare ips to sg rules
 module "cloudflare_ips" {
   source = "github.com/orzarchi/terraform-aws-cloudflare-security-group"
-
   security_group_id = "${module.security_group.security_group_id}"
 }
 
