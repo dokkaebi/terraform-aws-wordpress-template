@@ -51,6 +51,7 @@ cat > uploads.ini << EOF
 ${UPLOADS_INI}
 EOF
 
+# TODO: wp no longer creates this at install - should we write one? ok without?
 chown www-data:www-data .htaccess
 
 cat traefik.yaml
@@ -92,7 +93,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_USER: ${DB_USER}
-      WORDPRESS_DB_PASSWORD: ${DB_PWD}
+      WORDPRESS_DB_PASSWORD: "${DB_PWD}"
       WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_CONFIG_EXTRA: >
         define( 'MAILERSEND_SMTP_PASSWORD', '${MAILERSEND_SMTP_PASSWORD}' );
