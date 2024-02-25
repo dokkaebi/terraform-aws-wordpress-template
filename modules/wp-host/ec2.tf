@@ -31,6 +31,7 @@ resource "aws_eip_association" "wp-eip-association" {
   allocation_id = aws_eip.wp-eip.id
 }
 
+# Want to avoid ami updates forcing replacement, but can't use `lifecycle` with community module
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
