@@ -9,6 +9,11 @@ variable "aws_region" {
   description = "aws region"
 }
 
+variable "availability_zone" {
+  type = string
+  description = "AZ for the rds and ec2 instances"
+}
+
 # Tags
 variable "environment" {
   type        = string

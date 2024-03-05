@@ -45,6 +45,7 @@ module "wp-db" {
   source                    = "./modules/wp-db"
   vpc_id                    = module.vpc.vpc_id
   vpc_cidr                  = module.vpc.vpc_cidr_block
+  availability_zone         = var.availability_zone
   rds_database_subnet_ids   = module.vpc.database_subnets
   rds_allocated_storage     = var.rds_allocated_storage
   rds_database_name         = var.rds_database_name
@@ -63,6 +64,7 @@ module "wp-db" {
 # EC2-Host with running WP and associated EIP
 module "wp-host" {
   source         = "./modules/wp-host"
+  availability_zone = var.availability_zone
   vpc_id         = module.vpc.vpc_id
   subnet_id      = module.vpc.public_subnets[0]
   environment    = var.environment

@@ -50,6 +50,7 @@ module "ec2_instance" {
   vpc_security_group_ids      = [module.security_group.security_group_id]
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
+  availability_zone = var.availability_zone
 
   user_data = templatefile("${path.module}/userdata/userdata.wp.sh", {
     ZONE_NAME      = var.zone_name

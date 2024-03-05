@@ -1,3 +1,8 @@
+variable "availability_zone" {
+  type = string
+  description = "AZ for the ec2 instance"
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID the EC2-instance should get attached to"
