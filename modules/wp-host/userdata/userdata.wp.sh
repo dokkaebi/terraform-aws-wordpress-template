@@ -78,6 +78,7 @@ services:
           memory: 768M
         reservations:
           memory: 512M
+    memswap_limit: 768M  # set equal to memory limit to disallow swap
     restart: always
     networks:
       - proxy
