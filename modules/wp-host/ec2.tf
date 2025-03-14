@@ -9,8 +9,6 @@ module "security_group" {
   ingress_cidr_blocks = var.initial_cidr_blocks
   ingress_rules       = ["http-80-tcp", "https-443-tcp", "all-icmp", "ssh-tcp"]
   egress_rules        = ["all-all"]
-
-  #tags = local.tags
 }
 
 # Runs a daily Lambda to add cloudflare ips to sg rules
@@ -72,10 +70,8 @@ module "ec2_instance" {
       volume_size = 20
     },
   ]
-
+  
   tags = {
-    Terraform   = "true"
-    Environment = "${var.environment}"
     Name        = "${var.project}-${var.environment}-wp"
   }
 }

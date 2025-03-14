@@ -9,10 +9,6 @@ resource "aws_iam_role" "role" {
   name = "${local.name_prefix}-role"
 
   assume_role_policy = file("${path.module}/iam/ec2-assumerole.json")
-
-  tags = {
-    Environment = var.environment
-  }
 }
 
 resource "aws_iam_role_policy_attachment" "ssm-policy" {

@@ -8,10 +8,6 @@ module "key_pair" {
 
   key_name   = var.environment
   public_key = tls_private_key.this.public_key_openssh
-
-  tags = {
-    Environment = var.environment
-  }
 }
 
 resource "local_file" "ssh_key" {
