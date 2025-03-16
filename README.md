@@ -1,3 +1,14 @@
+
+
+# Running:
+
+Remember the credentials, the vars, and the correct workspace
+
+    terraform workspace select a25
+    AWS_PROFILE=a25 terraform plan -var-file=austin.tfvars -out plan.tfplan
+
+
+
 <!-- BEGIN_TF_DOCS -->
 # terraform-aws-wordpress-template
 

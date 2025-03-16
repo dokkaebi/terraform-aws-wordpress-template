@@ -14,7 +14,7 @@ module "security_group_db" {
 
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "~> 6.4"
+  version = "~> 6.10"
 
   identifier = "${var.project}-${terraform.workspace}-db"
 

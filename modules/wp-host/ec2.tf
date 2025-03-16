@@ -1,6 +1,6 @@
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "~> 5.3"
 
   name        = "${var.project}-${var.environment}-wp-host"
   description = "Security group for example usage with EC2 instance"
@@ -32,7 +32,7 @@ resource "aws_eip_association" "wp-eip-association" {
 # Want to avoid ami updates forcing replacement, but can't use `lifecycle` with community module
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 5.0"
+  version = "~> 5.7"
 
   name = "${var.project}-${var.environment}-spot-instance"
 
@@ -43,7 +43,7 @@ module "ec2_instance" {
   ami                         = data.aws_ami.ubuntu.id
   iam_instance_profile        = aws_iam_instance_profile.profile.name
   instance_type               = var.instance_type
-  key_name                    = module.key_pair.this_key_pair_key_name
+  key_name                    = module.key_pair.key_pair_name
   monitoring                  = false
   vpc_security_group_ids      = [module.security_group.security_group_id]
   subnet_id                   = var.subnet_id
@@ -70,7 +70,7 @@ module "ec2_instance" {
       volume_size = 20
     },
   ]
-  
+
   tags = {
     Name        = "${var.project}-${var.environment}-wp"
   }
